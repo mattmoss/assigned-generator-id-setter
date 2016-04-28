@@ -6,7 +6,7 @@ class Role {
     String name
 
     static mapping = {
-//        id generator: 'assigned'
+        id generator: 'assigned'
     }
 }
 
