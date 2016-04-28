@@ -2,36 +2,25 @@ package app.tesing
 
 import grails.test.mixin.TestFor
 import spock.lang.Specification
-import spock.lang.Unroll
 
 @TestFor(Role)
 class RoleSpec extends Specification {
 
-    @Unroll
     void 'test if mapping generator assigned allows constructor initialization'() {
         when:
-        def role = new Role(id: name, name: name)
+        def role = new Role(id: 'foobar')
 
         then:
-        name == role.name
-        name == role.id
-
-        where:
-        name << ['foobar', '42', 'superduper']
+        'foobar' == role.id
     }
 
-    @Unroll
     void 'test if mapping generator assigned allows post-constructor initialization'() {
         when:
-        def role = new Role(name: name)
-        role.id = name
+        def role = new Role()
+        role.id = 'foobar'
 
         then:
-        name == role.name
-        name == role.id
-
-        where:
-        name << ['foobar', '42', 'superduper']
+        'foobar' == role.id
     }
 }
 
